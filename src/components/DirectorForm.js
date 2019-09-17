@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DirectorForm = () => {
 	const [input, setInput] = useState('');

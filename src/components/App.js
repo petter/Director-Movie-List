@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import * as api from '../api';
+import DirectorForm from './DirectorForm';
 
 const App = () => {
 	useEffect(() => {
@@ -9,9 +10,7 @@ const App = () => {
 		<>
 			<header></header>
 			<main>
-				<form>
-                    <input type="text" onChange={(e) => }
-                </form>
+				<DirectorForm />
 			</main>
 		</>
 	);
