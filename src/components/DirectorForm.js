@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-const DirectorForm = () => {
+import * as directorActions from '../store/actions/director';
+
+const DirectorForm = ({ addDirector }) => {
 	const [input, setInput] = useState('');
 	return (
 		<form
 			onSubmit={event => {
 				event.preventDefault();
+				addDirector(input);
+				setInput('');
 			}}
 		>
 			<input
@@ -13,9 +18,18 @@ const DirectorForm = () => {
 				value={input}
 				onChange={e => setInput(e.target.value)}
 			/>
-			<button type="submit"></button>
+			<button type="submit">Add</button>
 		</form>
 	);
 };
 
-export default DirectorForm;
+const mapDispatchToProps = dispatch => {
+	return {
+		addDirector: name => dispatch(directorActions.directorRequest(name))
+	};
+};
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(DirectorForm);

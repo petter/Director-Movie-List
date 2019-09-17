@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
-import * as api from '../api';
+import React from 'react';
 import DirectorForm from './DirectorForm';
 
 const App = () => {
-	useEffect(() => {
-		api.getDirector('Quentin');
-	}, []);
 	return (
 		<>
-			<header></header>
+			<header>
+				<h1>Director Movie List</h1>
+			</header>
 			<main>
 				<DirectorForm />
 			</main>

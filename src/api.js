@@ -15,6 +15,11 @@ export const getCredits = async personId =>
 export const getPerson = async name =>
 	get(`https://api.themoviedb.org/3/search/person?query=${name}`);
 
+/**
+ * Searches TMDb for a director and gets all the movies directed by him/her
+ * @param {string} name Name of director
+ * @returns {object} Object with information about director and movies directed
+ */
 export const getDirector = async name => {
 	const people = await getPerson(name);
 	const person = people.results[0];
