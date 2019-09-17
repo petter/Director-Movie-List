@@ -3,9 +3,18 @@ import * as api from '../api';
 
 const App = () => {
 	useEffect(() => {
-		api.getProgramWithMovieData('16.9.2019').then(data => console.log(data));
+		api.getDirector('Quentin');
 	}, []);
-	return <h1>Dab</h1>;
+	return (
+		<>
+			<header></header>
+			<main>
+				<form>
+                    <input type="text" onChange={(e) => }
+                </form>
+			</main>
+		</>
+	);
 };
 
 export default App;
