@@ -1,17 +1,45 @@
 import React from 'react';
-import DirectorForm from './DirectorForm';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-const App = () => {
+import DirectorForm from './DirectorForm';
+import Director from './Director';
+
+const Main = styled.main`
+	padding: 1em;
+`;
+
+const Header = styled.header`
+	background-color: ${props => props.backgroundColor};
+	color: ${props => props.color};
+	height: 3rem;
+	padding: 0 0.25em;
+	font-size: 1.25rem;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: center;
+`;
+
+const App = ({ theme, directors }) => {
 	return (
 		<>
-			<header>
-				<h1>Director Movie List</h1>
-			</header>
-			<main>
+			<Header backgroundColor={theme.primary} color={theme.primaryText}>
+				Director Movie List
+			</Header>
+			<Main>
 				<DirectorForm />
-			</main>
+				{directors.map(director => (
+					<Director key={director.id} director={director} />
+				))}
+			</Main>
 		</>
 	);
 };
 
-export default App;
+const mapStateToProps = state => ({
+	directors: state.directors,
+	theme: state.theme
+});
+
+export default connect(mapStateToProps)(App);

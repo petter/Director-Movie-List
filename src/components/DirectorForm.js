@@ -1,26 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { InputField, Button } from '@dhis2/ui-core';
 
 import * as directorActions from '../store/actions/director';
 
-const DirectorForm = ({ addDirector }) => {
+const Form = styled.form`
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-gap: 0.5rem;
+	align-items: center;
+	width: 100%;
+	margin: 1em 0;
+`;
+
+const StyledInputField = styled(InputField)`
+	width: 100%;
+`;
+
+const StyledButton = styled(Button)``;
+
+const H2 = styled.h2`
+	margin-bottom: 0;
+`;
+
+const DirectorForm = ({ directors, addDirector, theme }) => {
 	const [input, setInput] = useState('');
+	const [error, setError] = useState(false);
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		addDirector('Quentin');
+	}, []);
+	useEffect(() => {
+		setLoading(false);
+	}, [directors]);
+
 	return (
-		<form
+		<Form
 			onSubmit={event => {
 				event.preventDefault();
-				addDirector(input);
-				setInput('');
+				if (input !== '') {
+					addDirector(input);
+					setLoading(true);
+					setInput('');
+				} else {
+					setError(true);
+				}
 			}}
 		>
-			<input
+			<H2>Add director</H2>
+			<StyledInputField
+				error={error}
+				loading={loading}
+				disabled={loading}
+				required
+				dense
 				type="text"
+				label="Director"
+				name="director"
 				value={input}
-				onChange={e => setInput(e.target.value)}
+				onChange={e => {
+					setInput(e.target.value);
+					if (error) setError(false);
+				}}
 			/>
-			<button type="submit">Add</button>
-		</form>
+			<StyledButton large type="submit">
+				Add
+			</StyledButton>
+		</Form>
 	);
+};
+
+const mapStateToProps = state => {
+	return { directors: state.directors, theme: state.theme };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -30,6 +83,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(DirectorForm);

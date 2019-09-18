@@ -1,3 +1,9 @@
+const BASE_URL_IMAGE = 'https://image.tmdb.org/t/p/';
+const getImageUrl = (url, movieTitle, size = 'w500') =>
+	url
+		? BASE_URL_IMAGE + size + url
+		: `http://placehold.it/500x750?text=${movieTitle}`;
+
 /**
  * Fetches data from url and returns JSON from response
  * @param {string} url
@@ -25,5 +31,10 @@ export const getDirector = async name => {
 	const person = people.results[0];
 	const credits = await getCredits(person.id);
 	const directedMovies = credits.crew.filter(movie => movie.job === 'Director');
-	return { ...person, movies: directedMovies };
+	const directedMoviesWithUrls = directedMovies.map(movie => ({
+		...movie,
+		poster_path: getImageUrl(movie.poster_path, movie.original_title),
+		backdrop_path: getImageUrl(movie.backdrop_path, movie.original_title)
+	}));
+	return { ...person, movies: directedMoviesWithUrls };
 };
