@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Chevron from './icons/Chevron';
 
-/* Style the accordion section */
 const AccordionSection = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -15,15 +14,13 @@ const Title = styled.p`
 `;
 
 const AccordionHead = styled.button`
-	background-color: ${props =>
-		props.active ? props.backgroundColorHover : props.backgroundColor};
+	background-color: ${props => props.backgroundColor};
 	color: ${props => props.color};
 	cursor: pointer;
 	padding: 1em;
 	display: flex;
 	align-items: center;
-	font-weight: bold;
-	font-size: 1rem;
+	font-size: 1.1rem;
 	border: none;
 	outline: none;
 	transition: background-color 0.6s ease;
@@ -39,19 +36,7 @@ const StyledChevron = styled(Chevron)`
 	transition: transform 0.25s ease;
 `;
 
-/* Style the accordion chevron icon */
-// .accordion__icon {
-//   margin-left: auto;
-//   transition: transform 0.6s ease;
-// }
-
-/* Style to rotate icon when state is active */
-// .rotate {
-//   transform: rotate(90deg);
-// }
-
 const AccordionBody = styled.div`
-	background-color: white;
 	overflow: hidden;
 	max-height: ${props => props.maxHeight};
 	transition: max-height 0.25s ease;

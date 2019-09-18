@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -21,7 +21,16 @@ const Header = styled.header`
 	align-items: center;
 `;
 
+const DirectorContainer = styled.div`
+	display: grid;
+	grid-gap: 0.1rem;
+`;
+
 const App = ({ theme, directors }) => {
+	useEffect(() => {
+		document.body.style.backgroundColor = theme.background;
+	}, [theme]);
+
 	return (
 		<>
 			<Header backgroundColor={theme.primary} color={theme.primaryText}>
@@ -29,9 +38,12 @@ const App = ({ theme, directors }) => {
 			</Header>
 			<Main>
 				<DirectorForm />
-				{directors.map(director => (
-					<Director key={director.id} director={director} />
-				))}
+				<h2>Directors</h2>
+				<DirectorContainer>
+					{directors.map(director => (
+						<Director key={director.id} director={director} />
+					))}
+				</DirectorContainer>
 			</Main>
 		</>
 	);
