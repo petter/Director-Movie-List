@@ -23,7 +23,7 @@ const AccordionHead = styled.button`
 	font-size: 1.1rem;
 	border: none;
 	outline: none;
-	transition: background-color 0.6s ease;
+	transition: background-color 0.2s ease;
 
 	&:hover {
 		background-color: ${props => props.backgroundColorHover};

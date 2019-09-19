@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import check from '../shared/assets/svgs/check-square-solid.svg';
+
 const MovieContainer = styled.div`
 	display: flex;
 	flex-flow: column;
@@ -12,15 +14,27 @@ const MovieContainer = styled.div`
 const PosterImg = styled.img`
 	width: 100%;
 	border-radius: 2px;
-	/* box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.2); */
+	background-color: grey;
+	transition: all 250ms ease;
 `;
 
+const PosterImgWrapper = styled.div`
+	cursor: pointer;
+
+	&:hover ${PosterImg}, &.seen ${PosterImg} {
+		mask: url(${check});
+		mask-repeat: no-repeat;
+		mask-position: center;
+	}
+`;
 const Title = styled.span``;
 
 const Movie = ({ movie: { original_title, poster_path } }) => {
 	return (
 		<MovieContainer>
-			<PosterImg src={poster_path} />
+			<PosterImgWrapper>
+				<PosterImg src={poster_path} />
+			</PosterImgWrapper>
 			<Title>{original_title}</Title>
 		</MovieContainer>
 	);
