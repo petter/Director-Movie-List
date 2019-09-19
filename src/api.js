@@ -34,7 +34,8 @@ export const getDirector = async name => {
 	const directedMoviesWithUrls = directedMovies.map(movie => ({
 		...movie,
 		poster_path: getImageUrl(movie.poster_path, movie.original_title),
-		backdrop_path: getImageUrl(movie.backdrop_path, movie.original_title)
+		backdrop_path: getImageUrl(movie.backdrop_path, movie.original_title),
+		seen: false
 	}));
 	return { ...person, movies: directedMoviesWithUrls };
 };

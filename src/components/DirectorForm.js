@@ -37,7 +37,7 @@ const DirectorForm = ({ directors, addDirector, theme }) => {
 
 	useEffect(() => {
 		addDirector('Quentin');
-	}, []);
+	}, [addDirector]);
 	useEffect(() => {
 		setLoading(false);
 	}, [directors]);

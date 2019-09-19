@@ -18,3 +18,8 @@ const directorError = error => ({
 	type: actionTypes.DIRECTOR_ERROR,
 	error: error
 });
+
+export const directorMovieToggleSeen = movieId => ({
+	type: actionTypes.DIRECTOR_MOVIE_TOGGLE_SEEN,
+	payload: movieId
+});

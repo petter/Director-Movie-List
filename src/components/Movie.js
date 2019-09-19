@@ -29,10 +29,10 @@ const PosterImgWrapper = styled.div`
 `;
 const Title = styled.span``;
 
-const Movie = ({ movie: { original_title, poster_path } }) => {
+const Movie = ({ movie: { original_title, poster_path, seen }, onClick }) => {
 	return (
 		<MovieContainer>
-			<PosterImgWrapper>
+			<PosterImgWrapper className={seen ? 'seen' : null} onClick={onClick}>
 				<PosterImg src={poster_path} />
 			</PosterImgWrapper>
 			<Title>{original_title}</Title>
