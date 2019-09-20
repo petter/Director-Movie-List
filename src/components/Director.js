@@ -13,22 +13,26 @@ const MovieContainer = styled.div`
 	grid-gap: 1rem;
 
 	@media (min-width: 425px) {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	@media (min-width: 700px) {
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(3, 1fr);
 	}
 
 	@media (min-width: 1000px) {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-columns: repeat(4, 1fr);
 	}
 `;
 
 const Director = ({ director: { name, movies }, toggleSeenMovie }) => {
-	console.log(movies);
 	return (
-		<Accordion title={name}>
+		<Accordion
+			title={`${name} - ${movies.reduce(
+				(accumlator, movie) => accumlator + movie.seen,
+				0
+			)}/${movies.length} seen`}
+		>
 			<MovieContainer>
 				{movies.map(movie => (
 					<Movie

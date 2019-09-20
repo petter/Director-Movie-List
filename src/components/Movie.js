@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-import check from '../shared/assets/svgs/check-square-solid.svg';
+import check from '../shared/assets/svg/check-square-solid.svg';
+import question from '../shared/assets/svg/question-square-solid.svg';
 
 const MovieContainer = styled.div`
 	display: flex;
@@ -21,10 +22,19 @@ const PosterImg = styled.img`
 const PosterImgWrapper = styled.div`
 	cursor: pointer;
 
-	&:hover ${PosterImg}, &.seen ${PosterImg} {
-		mask: url(${check});
+	&:hover ${PosterImg} {
 		mask-repeat: no-repeat;
+		mask-image: url(${question});
+	}
+
+	&.seen ${PosterImg} {
+		mask-repeat: no-repeat;
+		mask-image: url(${check});
+	}
+
+	&:hover:not(:focus) ${PosterImg}, &.seen ${PosterImg} {
 		mask-position: center;
+		filter: grayscale(100%);
 	}
 `;
 const Title = styled.span``;

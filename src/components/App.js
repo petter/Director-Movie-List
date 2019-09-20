@@ -7,6 +7,11 @@ import Director from './Director';
 
 const Main = styled.main`
 	padding: 1em;
+
+	@media (min-width: 1000px) {
+		width: 1000px;
+		margin: 0 auto;
+	}
 `;
 
 const Header = styled.header`
@@ -26,6 +31,28 @@ const DirectorContainer = styled.div`
 	grid-gap: 0.1rem;
 `;
 
+const NavLinks = styled.nav`
+	display: none;
+	flex-flow: row;
+	align-items: center;
+
+	& a {
+		margin: 0 0.5rem;
+	}
+
+	@media (min-width: 700px) {
+		display: flex;
+	}
+`;
+
+const Burger = styled.button`
+	display: flex;
+
+	@media (min-width: 700px) {
+		display: none;
+	}
+`;
+
 const App = ({ theme, directors }) => {
 	useEffect(() => {
 		document.body.style.backgroundColor = theme.background;
@@ -34,7 +61,13 @@ const App = ({ theme, directors }) => {
 	return (
 		<>
 			<Header backgroundColor={theme.primary} color={theme.primaryText}>
-				Director Movie List
+				<span>Director Movie List</span>
+				<NavLinks>
+					{[1, 2, 3, 4].map(num => (
+						<a key={num}>Test {num}</a>
+					))}
+				</NavLinks>
+				<Burger>Burger</Burger>
 			</Header>
 			<Main>
 				<DirectorForm />
