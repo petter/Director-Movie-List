@@ -42,6 +42,10 @@ const AccordionBody = styled.div`
 	transition: max-height 0.25s ease;
 `;
 
+/**
+ * Accordion based on the following article,
+ * https://medium.com/skillthrive/build-a-react-accordion-component-from-scratch-using-react-hooks-a71d3d91324b.
+ */
 const Accordion = ({ children, title, theme, defaultActive }) => {
 	const [active, setActive] = useState(defaultActive);
 	const [height, setHeight] = useState('0px');
