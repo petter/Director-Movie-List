@@ -38,6 +38,8 @@ const PosterImgWrapper = styled.div`
 	}
 `;
 
+const Title = styled.span``;
+
 const Movie = ({ movie: { original_title, poster_path, seen }, onClick }) => {
 	return (
 		<MovieContainer>

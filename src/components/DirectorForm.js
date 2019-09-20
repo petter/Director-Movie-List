@@ -30,14 +30,11 @@ const H2 = styled.h2`
 	margin-bottom: 0;
 `;
 
-const DirectorForm = ({ directors, addDirector, theme }) => {
+const DirectorForm = ({ directors, addDirector }) => {
 	const [input, setInput] = useState('');
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		addDirector('Quentin');
-	}, [addDirector]);
 	useEffect(() => {
 		setLoading(false);
 	}, [directors]);
