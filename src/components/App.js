@@ -49,9 +49,11 @@ const App = ({ theme, directors }) => {
 				<DirectorForm />
 				<h2>Directors</h2>
 				<DirectorContainer>
-					{directors.map(director => (
-						<Director key={director.id} director={director} />
-					))}
+					{directors.length === 0
+						? 'You have no favourite directors. Add one in the input above.'
+						: directors.map(director => (
+								<Director key={director.id} director={director} />
+						  ))}
 				</DirectorContainer>
 			</Main>
 			<svg width="0" height="0">
