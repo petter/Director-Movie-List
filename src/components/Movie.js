@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import check from '../shared/assets/svg/check-square-solid.svg';
 import question from '../shared/assets/svg/question-square-solid.svg';
@@ -37,7 +37,6 @@ const PosterImgWrapper = styled.div`
 		filter: grayscale(100%);
 	}
 `;
-const Title = styled.span``;
 
 const Movie = ({ movie: { original_title, poster_path, seen }, onClick }) => {
 	return (

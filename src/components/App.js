@@ -22,35 +22,17 @@ const Header = styled.header`
 	font-size: 1.25rem;
 	display: flex;
 	flex-flow: row;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
+
+	@media (min-width: 700px) {
+		justify-content: space-between;
+	}
 `;
 
 const DirectorContainer = styled.div`
 	display: grid;
 	grid-gap: 0.1rem;
-`;
-
-const NavLinks = styled.nav`
-	display: none;
-	flex-flow: row;
-	align-items: center;
-
-	& a {
-		margin: 0 0.5rem;
-	}
-
-	@media (min-width: 700px) {
-		display: flex;
-	}
-`;
-
-const Burger = styled.button`
-	display: flex;
-
-	@media (min-width: 700px) {
-		display: none;
-	}
 `;
 
 const App = ({ theme, directors }) => {
@@ -62,12 +44,6 @@ const App = ({ theme, directors }) => {
 		<>
 			<Header backgroundColor={theme.primary} color={theme.primaryText}>
 				<span>Director Movie List</span>
-				<NavLinks>
-					{[1, 2, 3, 4].map(num => (
-						<a key={num}>Test {num}</a>
-					))}
-				</NavLinks>
-				<Burger>Burger</Burger>
 			</Header>
 			<Main>
 				<DirectorForm />
