@@ -7,7 +7,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import rootReducer from './reducers';
 
 const persistConfig = {
-	key: 'root',
+	key: 'directormovielist',
 	storage: storage,
 	stateReconciler: autoMergeLevel2
 };
