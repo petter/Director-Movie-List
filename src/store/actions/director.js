@@ -6,7 +6,10 @@ export const directorRequest = name => dispatch => {
 	api
 		.getDirector(name)
 		.then(res => dispatch(directorAdd(res)))
-		.catch(err => dispatch(directorError(err)));
+		.catch(err => {
+			console.log(err);
+			dispatch(directorError(err.message));
+		});
 };
 
 const directorAdd = director => ({
@@ -16,7 +19,7 @@ const directorAdd = director => ({
 
 const directorError = error => ({
 	type: actionTypes.DIRECTOR_ERROR,
-	error: error
+	payload: error
 });
 
 export const directorMovieToggleSeen = movieId => ({

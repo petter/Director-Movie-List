@@ -70,7 +70,7 @@ const App = ({ theme, directors }) => {
 };
 
 const mapStateToProps = state => ({
-	directors: state.directors,
+	directors: state.directors.results,
 	theme: state.theme
 });
 

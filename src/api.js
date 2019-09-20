@@ -37,5 +37,7 @@ export const getDirector = async name => {
 		backdrop_path: getImageUrl(movie.backdrop_path, movie.original_title),
 		seen: false
 	}));
+
+	if (directedMovies.length === 0) throw Error('Director not found');
 	return { ...person, movies: directedMoviesWithUrls };
 };
