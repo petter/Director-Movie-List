@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import DirectorForm from './DirectorForm';
 import Director from './Director';
+import RandomMovie from './RandomMovie';
 
 const Main = styled.main`
 	padding: 1em;
@@ -47,6 +48,7 @@ const App = ({ theme, directors }) => {
 			</Header>
 			<Main>
 				<DirectorForm />
+				<RandomMovie />
 				<h2>Directors</h2>
 				<DirectorContainer>
 					{directors.length === 0

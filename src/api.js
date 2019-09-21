@@ -28,6 +28,9 @@ export const getPerson = async name =>
  */
 export const getDirector = async name => {
 	const people = await getPerson(name);
+
+	if (people.total_results === 0) throw Error('Director not found');
+
 	const person = people.results[0];
 	const credits = await getCredits(person.id);
 	const directedMovies = credits.crew.filter(movie => movie.job === 'Director');

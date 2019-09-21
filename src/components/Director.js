@@ -1,10 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import Movie from './Movie';
 import Accordion from '../shared/components/Accordion';
-import { directorMovieToggleSeen } from '../store/actions/director';
 
 const MovieContainer = styled.div`
 	display: grid;
@@ -25,7 +23,7 @@ const MovieContainer = styled.div`
 	}
 `;
 
-const Director = ({ director: { name, movies }, toggleSeenMovie }) => {
+const Director = ({ director: { name, movies } }) => {
 	return (
 		<Accordion
 			title={`${name} - ${movies.reduce(
@@ -35,22 +33,11 @@ const Director = ({ director: { name, movies }, toggleSeenMovie }) => {
 		>
 			<MovieContainer>
 				{movies.map(movie => (
-					<Movie
-						key={movie.id}
-						movie={movie}
-						onClick={() => toggleSeenMovie(movie.id)}
-					/>
+					<Movie key={movie.id} movie={movie} />
 				))}
 			</MovieContainer>
 		</Accordion>
 	);
 };
 
-const mapDispatchToProps = dispatch => ({
-	toggleSeenMovie: id => dispatch(directorMovieToggleSeen(id))
-});
-
-export default connect(
-	null,
-	mapDispatchToProps
-)(Director);
+export default Director;
