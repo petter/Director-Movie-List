@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://pettersmoen.github.io/Director-Movie-List/",
   "dependencies": {
+    "@babel/core": "^7.6.2",
     "@dhis2/ui-core": "^3.10.0",
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
@@ -20,8 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-	"predeploy": "npm run build",
-	"deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

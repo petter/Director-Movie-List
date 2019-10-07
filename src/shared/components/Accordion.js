@@ -46,7 +46,7 @@ const AccordionBody = styled.div`
  * Accordion based on the following article,
  * https://medium.com/skillthrive/build-a-react-accordion-component-from-scratch-using-react-hooks-a71d3d91324b.
  */
-const Accordion = ({ children, title, theme, defaultActive }) => {
+const Accordion = ({ children, title, theme, seenAllMovies, defaultActive }) => {
 	const [active, setActive] = useState(defaultActive);
 	const [height, setHeight] = useState('0px');
 
@@ -67,8 +67,8 @@ const Accordion = ({ children, title, theme, defaultActive }) => {
 		<AccordionSection>
 			<AccordionHead
 				active={active}
-				backgroundColor={theme.primary}
-				backgroundColorHover={theme.primaryHover}
+				backgroundColor={seenAllMovies ? theme.finishedBarColor : theme.primary}
+				backgroundColorHover={seenAllMovies ? theme.finishedBarColorHover : theme.primaryHover}
 				color={theme.primaryText}
 				onClick={toggleAccordion}
 			>
