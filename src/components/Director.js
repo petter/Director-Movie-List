@@ -24,10 +24,11 @@ const MovieContainer = styled.div`
 `;
 
 const Director = ({ director: { name, movies } }) => {
-	
+	const numSeenMovies = movies.filter(m => m.seen).length;
 	return (
 		<Accordion
-			title={`${name} - ${movies.filter(m => m.seen).length}/${movies.length} seen`}
+			title={`${name} - ${numSeenMovies}/${movies.length} seen`}
+			seenAllMovies={numSeenMovies === movies.length}
 		>
 			<MovieContainer>
 				{movies.map(movie => (

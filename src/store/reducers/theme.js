@@ -3,17 +3,21 @@ const createTheme = (
 	primaryHover,
 	primaryText,
 	background,
-	backgroundText
+	backgroundText,
+	finishedBarColor,
+	finishedBarColorHover,
 ) => ({
 	primary,
 	primaryHover,
 	primaryText,
 	background,
-	backgroundText
+	backgroundText,
+	finishedBarColor,
+	finishedBarColorHover
 });
 
 // const blue = createTheme('#2291e6', '#2476b5', '#ffffff', '#ffffff', '#000000');
-const red = createTheme('#F93943', '#CC353C', '#ffffff', '#ffffff', '#000000');
+const red = createTheme('#F93943', '#CC353C', '#ffffff', '#ffffff', '#000000','#00A86B','#007000');
 // const darkMode = createTheme(
 // 	'#262626',
 // 	'#363636',
