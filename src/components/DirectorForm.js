@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { InputField, Button, Help } from '@dhis2/ui-core';
-
+import { InputField, Button, Help, MenuList, MenuItem} from '@dhis2/ui-core';
 import * as directorActions from '../store/actions/director';
+import {directors} from "../shared/directors";
 
 const Form = styled.form`
 	display: grid;
@@ -30,8 +30,16 @@ const H2 = styled.h2`
 	margin-bottom: 0;
 `;
 
+
+
+
 const DirectorForm = ({ addDirector, loading, error }) => {
 	const [input, setInput] = useState('');
+
+	const directorRegex = new RegExp(".*" + input + ".*","i");
+	const targets = directors.filter(dir => directorRegex.test(dir));
+
+
 
 	return (
 		<>
@@ -64,6 +72,22 @@ const DirectorForm = ({ addDirector, loading, error }) => {
 					Add
 				</StyledButton>
 			</Form>
+			{targets.length <= 100 && 
+				<MenuList>
+				 
+				 {targets.map(dir => (<MenuItem
+				   dense
+				   label={dir}
+				   onClick={() => {
+						addDirector(dir);
+						setInput('');
+				   }
+				}
+				   value={dir}
+				 />))}
+				 
+				 
+			   </MenuList>}
 		</>
 	);
 };
