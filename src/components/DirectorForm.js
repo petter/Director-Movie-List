@@ -41,6 +41,7 @@ const DirectorForm = ({ addDirector, loading, error }) => {
 		<>
 			<H2>Add director</H2>
 			<Form
+				autoComplete="off"
 				onSubmit={event => {
 					event.preventDefault();
 					if (input !== '') {
