@@ -28,6 +28,15 @@ const reducer = (state = initialState, action) => {
 					)
 				}))
 			};
+		case actionTypes.DIRECTOR_DELETE_MOVIE:
+			return {
+				...state,
+				results: state.results.map(({ movies, ...rest }) => ({
+					...rest,
+					movies: movies.filter(movie => movie.id !== action.payload)			
+				}))
+			};
+			
 		default:
 			return state;
 	}
