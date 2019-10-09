@@ -26,30 +26,24 @@ const reducer = (state = initialState, action) => {
 					state.results
 				)
 			};
-			// results: state.results.map(({ movies, ...rest }) => ({
-			// 	...rest,
-			// 	movies: movies.map(movie =>
-			// 		movie.id === action.payload
-			// 			? { ...movie, seen: !movie.seen }
-			// 			: movie
-			// 	)
-			// }))
 		case actionTypes.DIRECTOR_DELETE_MOVIE:
 			return {
 				...state,
-				results: state.results.map(({ movies, ...rest }) => ({
-					...rest,
-					movies: movies.filter(movie => movie.id !== action.payload)			
-				}))
+				results: L.modify(
+					[L.elems, "movies"],
+					movies => movies.filter(movie => movie.id !== action.payload),
+					state.results
+				),
+				results: L.modify(
+					[L.elems, "movies"],
+					movies => movies.filter(movie => movie.id !== action.payload),
+					state.results
+				)
 			};
 
 		default:
 			return state;
 	}
 };
-const e = {elems: [{x: 1, y: 2}, {x: 3, y: 4}]};
-const a = L.modify(['elems', 0, 'x'], x=>x+1, e);
-console.log(e);
-console.log(a);
 
 export default reducer;
