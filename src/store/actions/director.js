@@ -26,3 +26,8 @@ export const directorMovieToggleSeen = movieId => ({
 	type: actionTypes.DIRECTOR_MOVIE_TOGGLE_SEEN,
 	payload: movieId
 });
+
+export const deleteMovie = movieId => ({
+	type: actionTypes.DIRECTOR_DELETE_MOVIE,
+	payload: movieId
+});
