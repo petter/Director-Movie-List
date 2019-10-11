@@ -4,8 +4,6 @@ const getImageUrl = (url, movieTitle, size = 'w500') =>
 		? BASE_URL_IMAGE + size + url
 		: `http://placehold.it/500x750?text=${movieTitle}`;
 
-console.log(process.env.REACT_APP_API_KEY);
-
 /**
  * Fetches data from url and returns JSON from response
  * @param {string} url
