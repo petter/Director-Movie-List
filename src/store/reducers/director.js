@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import * as L from 'partial.lenses';
 
 const initialState = { error: '', loading: false, results: [] };
 
@@ -17,26 +18,25 @@ const reducer = (state = initialState, action) => {
 						loading: false
 				  };
 		case actionTypes.DIRECTOR_MOVIE_TOGGLE_SEEN:
-			return {
-				...state,
-				results: state.results.map(({ movies, ...rest }) => ({
-					...rest,
-					movies: movies.map(movie =>
-						movie.id === action.payload
-							? { ...movie, seen: !movie.seen }
-							: movie
-					)
-				}))
-			};
+			return L.modify(
+				[
+					'results',
+					L.elems,
+					'movies',
+					L.elems,
+					L.when(movie => movie.id === action.payload),
+					'seen'
+				],
+				x => !x,
+				state
+			);
 		case actionTypes.DIRECTOR_DELETE_MOVIE:
-			return {
-				...state,
-				results: state.results.map(({ movies, ...rest }) => ({
-					...rest,
-					movies: movies.filter(movie => movie.id !== action.payload)			
-				}))
-			};
-			
+			return L.modify(
+				['results', L.elems, 'movies'],
+				movies => movies.filter(movie => movie.id !== action.payload),
+				state
+			);
+
 		default:
 			return state;
 	}
