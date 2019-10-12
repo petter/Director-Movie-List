@@ -40,6 +40,10 @@ const PosterImgWrapper = styled.div`
 	}
 `;
 
+const AWrapper = styled.a`
+	color:black
+`;
+
 const Title = styled.span``;
 
 const Movie = ({
@@ -47,6 +51,7 @@ const Movie = ({
 	toggleSeenMovie,
 	deleteMovie
 }) => {
+	const url = "https://www.themoviedb.org/movie/" + id
 	return (
 		<MovieContainer>
 			<PosterImgWrapper
@@ -55,7 +60,11 @@ const Movie = ({
 			>
 				<PosterImg src={poster_path} />
 			</PosterImgWrapper>
-			<Title>{original_title}</Title>
+			<Title>
+				<AWrapper href={url} target="_blank">
+					{original_title}
+				</AWrapper>
+			</Title>
 			<button onClick={() => deleteMovie(id)}>
 				Slett film fra liste
 			</button>
