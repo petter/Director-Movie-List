@@ -14,30 +14,32 @@ const MovieContainer = styled.div`
 	margin: 1rem auto;
 `;
 
-const RandomMovie = ({ movies }) => {
-	const [movie, setMovie] = useState(null);
+const RandomMovie = ({ allMovies, unseenMovies }) => {
+	const [randomMovieId, setRandomMovieId] = useState(null);
+	const randomMovie = allMovies.find(movie => movie.id === randomMovieId);
+
 	return (
 		<Container>
 			<h2>What movie should I see?</h2>
 			<p>Let us help you find a movie to watch.</p>
 			<Button
-				onClick={() =>
-					setMovie(movies[Math.floor(Math.random() * movies.length)])
-				}
+				onClick={() => {
+					const randomMovie = unseenMovies[Math.floor(Math.random() * unseenMovies.length)];
+					setRandomMovieId(randomMovie.id);
+				}}
 			>
 				Get random unseen movie
 			</Button>
-
-			<MovieContainer>{movie && <Movie movie={movie} />}</MovieContainer>
+			<MovieContainer>{randomMovie && <Movie movie={randomMovie} />}</MovieContainer>
 		</Container>
 	);
 };
 
-const mapStateToProps = state => ({
-	movies: state.directors.results.reduce(
-		(prev, cur) => [...prev, ...cur.movies.filter(movie => !movie.seen)],
-		[]
-	)
-});
+const mapStateToProps = state => {
+	const allMovies = state.directors.results
+		.flatMap(res => res.movies);
+	const unseenMovies = allMovies.filter(movie => !movie.seen)
+	return { allMovies, unseenMovies };
+};
 
 export default connect(mapStateToProps)(RandomMovie);
