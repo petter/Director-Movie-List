@@ -28,7 +28,7 @@ const Director = ({ director: { name, movies } }) => {
 	return (
 		<Accordion
 			title={`${name} - ${numSeenMovies}/${movies.length} seen`}
-			seenAllMovies={numSeenMovies === movies.length}
+			movieProgress={numSeenMovies / movies.length}
 		>
 			<MovieContainer>
 				{movies.map(movie => (
