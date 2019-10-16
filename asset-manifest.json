@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Director-Movie-List/static/css/main.c9da937e.chunk.css",
-    "main.js": "/Director-Movie-List/static/js/main.f2e50703.chunk.js",
-    "main.js.map": "/Director-Movie-List/static/js/main.f2e50703.chunk.js.map",
+    "main.js": "/Director-Movie-List/static/js/main.3231427e.chunk.js",
+    "main.js.map": "/Director-Movie-List/static/js/main.3231427e.chunk.js.map",
     "runtime~main.js": "/Director-Movie-List/static/js/runtime~main.62458aa1.js",
     "runtime~main.js.map": "/Director-Movie-List/static/js/runtime~main.62458aa1.js.map",
     "static/js/2.d1155323.chunk.js": "/Director-Movie-List/static/js/2.d1155323.chunk.js",
     "static/js/2.d1155323.chunk.js.map": "/Director-Movie-List/static/js/2.d1155323.chunk.js.map",
     "index.html": "/Director-Movie-List/index.html",
-    "precache-manifest.82d33255dd0f0f848a167c9908fe5643.js": "/Director-Movie-List/precache-manifest.82d33255dd0f0f848a167c9908fe5643.js",
+    "precache-manifest.8e18142a3eabaeabff652226a6108422.js": "/Director-Movie-List/precache-manifest.8e18142a3eabaeabff652226a6108422.js",
     "service-worker.js": "/Director-Movie-List/service-worker.js",
     "static/css/main.c9da937e.chunk.css.map": "/Director-Movie-List/static/css/main.c9da937e.chunk.css.map",
     "static/media/check-square-solid.svg": "/Director-Movie-List/static/media/check-square-solid.ac5db576.svg",
