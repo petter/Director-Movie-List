@@ -9,25 +9,46 @@ const AccordionSection = styled.div`
 	flex-direction: column;
 `;
 
-const Title = styled.p`
-	margin: 0;
-`;
-
-const AccordionHead = styled.button`
+const AccordionHead = styled.div`
 	background-color: ${props => props.backgroundColor};
 	color: ${props => props.color};
 	cursor: pointer;
 	padding: 1em;
-	display: flex;
-	align-items: center;
 	font-size: 1.1rem;
 	border: none;
 	outline: none;
 	transition: background-color 0.2s ease;
+	position: relative;
 
 	&:hover {
 		background-color: ${props => props.backgroundColorHover};
 	}
+`;
+
+const AccordionProgress = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: ${props => props.progress};
+	height: 100%;
+	transition: width 500ms ease-in-out, background-color 0.2s ease;
+
+	background-color: ${props => props.backgroundColor};
+	${AccordionHead}:hover & {
+		background-color: ${props => props.backgroundColorHover};
+	}
+`;
+
+const AccordionHeadContent = styled.div`
+	display: flex;
+	align-items: center;
+	* {
+		z-index: 1;
+	}
+`;
+
+const Title = styled.p`
+	margin: 0;
 `;
 
 const StyledChevron = styled(Chevron)`
@@ -46,7 +67,13 @@ const AccordionBody = styled.div`
  * Accordion based on the following article,
  * https://medium.com/skillthrive/build-a-react-accordion-component-from-scratch-using-react-hooks-a71d3d91324b.
  */
-const Accordion = ({ children, title, theme, seenAllMovies, defaultActive }) => {
+const Accordion = ({
+	children,
+	title,
+	theme,
+	movieProgress,
+	defaultActive
+}) => {
 	const [active, setActive] = useState(defaultActive);
 	const [height, setHeight] = useState('0px');
 
@@ -67,13 +94,20 @@ const Accordion = ({ children, title, theme, seenAllMovies, defaultActive }) => 
 		<AccordionSection>
 			<AccordionHead
 				active={active}
-				backgroundColor={seenAllMovies ? theme.finishedBarColor : theme.primary}
-				backgroundColorHover={seenAllMovies ? theme.finishedBarColorHover : theme.primaryHover}
+				backgroundColor={theme.primary}
+				backgroundColorHover={theme.primaryHover}
 				color={theme.primaryText}
 				onClick={toggleAccordion}
 			>
-				<Title>{title}</Title>
-				<StyledChevron active={active} width={10} fill={theme.primaryText} />
+				<AccordionProgress
+					backgroundColor={theme.finishedBarColor}
+					backgroundColorHover={theme.finishedBarColorHover}
+					progress={`${movieProgress * 100}%`}
+				/>
+				<AccordionHeadContent>
+					<Title>{title}</Title>
+					<StyledChevron active={active} width={10} fill={theme.primaryText} />
+				</AccordionHeadContent>
 			</AccordionHead>
 			<AccordionBody ref={content} maxHeight={height}>
 				{children}
