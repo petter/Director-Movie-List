@@ -13,10 +13,10 @@ const reducer = (state = initialState, action) => {
 			return state.results.find(director => director.id === action.payload.id)
 				? { ...state, error: 'Director already exists', loading: false }
 				: {
-						...state,
-						results: [action.payload, ...state.results],
-						loading: false
-				  };
+					...state,
+					results: [action.payload, ...state.results],
+					loading: false
+				};
 		case actionTypes.DIRECTOR_MOVIE_TOGGLE_SEEN:
 			return L.modify(
 				[
@@ -31,9 +31,13 @@ const reducer = (state = initialState, action) => {
 				state
 			);
 		case actionTypes.DIRECTOR_DELETE_MOVIE:
-			return L.modify(
-				['results', L.elems, 'movies'],
-				movies => movies.filter(movie => movie.id !== action.payload),
+			return L.remove(
+				[
+					'results',
+					L.elems,
+					'movies',
+					L.filter(movie => movie.id === action.payload)
+				],
 				state
 			);
 
