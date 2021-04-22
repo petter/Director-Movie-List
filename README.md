@@ -1,6 +1,6 @@
 # Director Movie List
 
-Check the app out [here](https://pettersmoen.github.io/Director-Movie-List/).
+Check the app out [here](https://petter.github.io/Director-Movie-List/).
 
 ## About the app
 
